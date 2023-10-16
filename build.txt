@@ -1,0 +1,3 @@
+displayName = Test Mod
+author = DalekRichards
+version = 0.1

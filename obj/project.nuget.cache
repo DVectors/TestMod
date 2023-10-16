@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "dEg73ygPrRyobcNePk5GMJp/AFCEAiuiwaxE5xFdHLZNgaukvr7EwVj9mo0dd4TTlL8peaTqbsl/y0QMg4gdQg==",
+  "success": true,
+  "projectFilePath": "c:\\Users\\danie\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\TestMod\\TestMod.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\danie\\.nuget\\packages\\tmodloader.codeassist\\0.1.5\\tmodloader.codeassist.0.1.5.nupkg.sha512",
+    "C:\\Users\\danie\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.15\\microsoft.netcore.app.ref.6.0.15.nupkg.sha512",
+    "C:\\Users\\danie\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.15\\microsoft.windowsdesktop.app.ref.6.0.15.nupkg.sha512",
+    "C:\\Users\\danie\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.15\\microsoft.aspnetcore.app.ref.6.0.15.nupkg.sha512"
+  ],
+  "logs": []
+}
