@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 using static TestMod.Helpers.DustEffectsHelper;
 
@@ -29,27 +30,38 @@ namespace TestMod.Helpers
             }       
         }
 
-        public static void determineGalaxiaBuffEffectAndItemProperties(int buffEffectID, Item item, NPC target)
+        public static void determineGalaxiaBuffEffectAndItemProperties(int buffEffectID, NPC target)
         {
             switch (buffEffectID)
             {
                 case BuffID.Electrified:
-                    item.damage = 20;
-				    target.AddBuff(buffEffectID, 300); // Electrify for 300 ticks if player has all hearts
-                    break;
                 case BuffID.OnFire:
-                    item.damage = 20;
-				    target.AddBuff(buffEffectID, 300); // Electrify for 300 ticks if player has all hearts
-                    break;
                 case BuffID.OnFire3:
-                    item.damage = 20;
 				    target.AddBuff(buffEffectID, 300); // Electrify for 300 ticks if player has all hearts
                     break;
                 default:
-                    item.damage = 15;
                     break;	
             }
         }
+
+        // public static void determineGalaxiaDamage(int buffEffectID, StatModifier damage)
+        // {
+        //     switch (buffEffectID)
+        //     {
+        //         case BuffID.Electrified:
+		// 		    damage.Additive
+        //             break;
+        //         case BuffID.OnFire:
+		// 		    damage = damage * 2;
+        //             break;
+        //         case BuffID.OnFire3:
+		// 		    damage = damage * 2;
+        //             break;
+        //         default:
+        //             damage = 15;
+        //             break;	
+        //     }
+        // }
 
         public static void determineGalaxiaDustEffect(int buffEffectID, Rectangle hitbox)
         {

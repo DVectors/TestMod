@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -53,9 +54,18 @@ namespace TestMod.Items
 			PlayerManaStatus playerManaStatus = playerCurrentManaStatus(player.statManaMax);
 			int buffEffectID = determineGalaxiaWeaponBuffStatus(playerHealthStatus, playerManaStatus);
 
-			determineGalaxiaBuffEffectAndItemProperties(buffEffectID, Item, target);
+			determineGalaxiaBuffEffectAndItemProperties(buffEffectID, target);
 			determineGalaxiaDustEffect(buffEffectID, target.Hitbox);
         }
+
+        // public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        // {
+        //     PlayerHealthStatus playerHealthStatus = playerCurrentHealthStatus(player.statLifeMax);
+		// 	PlayerManaStatus playerManaStatus = playerCurrentManaStatus(player.statManaMax);
+		// 	int buffEffectID = determineGalaxiaWeaponBuffStatus(playerHealthStatus, playerManaStatus);
+
+		// 	determineGalaxiaDamage(buffEffectID, damage,);
+        // }
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
@@ -66,15 +76,18 @@ namespace TestMod.Items
 			determineGalaxiaDustEffect(buffEffectID, hitbox);
         }
 
-        public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
-        {
-			PlayerHealthStatus playerHealthStatus = playerCurrentHealthStatus(player.statLifeMax);
-			PlayerManaStatus playerManaStatus = playerCurrentManaStatus(player.statManaMax);
+        // public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        // {
+        //     PlayerHealthStatus playerHealthStatus = playerCurrentHealthStatus(player.statLifeMax);
+		// 	PlayerManaStatus playerManaStatus = playerCurrentManaStatus(player.statManaMax);
             
-			if (galaxiaProjectileEnabled(playerHealthStatus, playerManaStatus)) // Fire projectile when at full health and max hearts
-			{
-				Item.shoot = ProjectileID.Bullet; // 14 = bullet (Placeholder)
-			}
-        }
+		// 	if (galaxiaProjectileEnabled(playerHealthStatus, playerManaStatus)) // Fire projectile when at full health and max hearts
+		// 	{
+		// 		type = ProjectileID.EyeBeam; // 259 = Eye Beam (Placeholder)
+		// 		Projectile.NewProjectile(Main.myPlayer, position, velocity, type, damage, knockback);
+		// 	}
+
+		// 	return false;
+        // }
     }
 }
