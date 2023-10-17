@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -17,8 +18,8 @@ namespace TestMod.Items
 		{
 			Item.damage = 15;
 			Item.DamageType = DamageClass.Melee;
-			Item.width = 40;
-			Item.height = 40;
+			Item.width = 42;
+			Item.height = 42;
 			Item.useTime = 20;
 			Item.useAnimation = 20;
 			Item.useStyle = ItemUseStyleID.Swing;
@@ -50,11 +51,15 @@ namespace TestMod.Items
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
+			Console.WriteLine("Running Galaxia OnHitNPC method.");
 			PlayerHealthStatus playerHealthStatus = playerCurrentHealthStatus(player.statLifeMax);
+			Console.WriteLine("Current Health: {0}",playerHealthStatus.ToString());
 			PlayerManaStatus playerManaStatus = playerCurrentManaStatus(player.statManaMax);
-			int buffEffectID = determineGalaxiaWeaponBuffStatus(playerHealthStatus, playerManaStatus);
+            Console.WriteLine("Current Health: {0}",playerHealthStatus.ToString());
+            int buffEffectID = determineGalaxiaWeaponBuffStatus(playerHealthStatus, playerManaStatus);
+	        Console.WriteLine("Buff ID: {0}",buffEffectID);
 
-			determineGalaxiaBuffEffectAndItemProperties(buffEffectID, target);
+            determineGalaxiaBuffEffectAndItemProperties(buffEffectID, target);
 			determineGalaxiaDustEffect(buffEffectID, target.Hitbox);
         }
 
@@ -69,25 +74,29 @@ namespace TestMod.Items
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
+			Console.WriteLine("Running Galaxia MeleeEffects method.");
 			PlayerHealthStatus playerHealthStatus = playerCurrentHealthStatus(player.statLifeMax);
-			PlayerManaStatus playerManaStatus = playerCurrentManaStatus(player.statManaMax);
-			int buffEffectID = determineGalaxiaWeaponBuffStatus(playerHealthStatus, playerManaStatus);
-			
-			determineGalaxiaDustEffect(buffEffectID, hitbox);
+            Console.WriteLine("Current Health: {0}",playerHealthStatus.ToString());
+            PlayerManaStatus playerManaStatus = playerCurrentManaStatus(player.statManaMax);
+            Console.WriteLine("Current Mana: {0}",playerManaStatus.ToString());
+            int buffEffectID = determineGalaxiaWeaponBuffStatus(playerHealthStatus, playerManaStatus);
+            Console.WriteLine("Buff ID: {0}",buffEffectID);
+
+            determineGalaxiaDustEffect(buffEffectID, hitbox);
         }
 
-        // public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-        // {
-        //     PlayerHealthStatus playerHealthStatus = playerCurrentHealthStatus(player.statLifeMax);
-		// 	PlayerManaStatus playerManaStatus = playerCurrentManaStatus(player.statManaMax);
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            PlayerHealthStatus playerHealthStatus = playerCurrentHealthStatus(player.statLifeMax);
+			PlayerManaStatus playerManaStatus = playerCurrentManaStatus(player.statManaMax);
             
-		// 	if (galaxiaProjectileEnabled(playerHealthStatus, playerManaStatus)) // Fire projectile when at full health and max hearts
-		// 	{
-		// 		type = ProjectileID.EyeBeam; // 259 = Eye Beam (Placeholder)
-		// 		Projectile.NewProjectile(Main.myPlayer, position, velocity, type, damage, knockback);
-		// 	}
+			if (galaxiaProjectileEnabled(playerHealthStatus, playerManaStatus)) // Fire projectile when at full health and max hearts
+			{
+				type = ProjectileID.EyeBeam; // 259 = Eye Beam (Placeholder)
+				Projectile.NewProjectile(source, position, velocity, type, damage, knockback);
+			}
 
-		// 	return false;
-        // }
+			return false;
+        }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -37,6 +38,7 @@ namespace TestMod.Helpers
                 case BuffID.Electrified:
                 case BuffID.OnFire:
                 case BuffID.OnFire3:
+                    Console.WriteLine("Adding {0} buff effect to NPC.", buffEffectID);
 				    target.AddBuff(buffEffectID, 300); // Electrify for 300 ticks if player has all hearts
                     break;
                 default:
@@ -68,15 +70,19 @@ namespace TestMod.Helpers
             switch (buffEffectID)
             {
                 case BuffID.Electrified:
+                    Console.WriteLine("Dust Effect: Electric");
                     applyDustEffect(hitbox, DustID.Electric);
                     break;
                 case BuffID.OnFire:
+                    Console.WriteLine("Dust Effect: FlameBurst");
                     applyDustEffect(hitbox, DustID.FlameBurst);
                     break;
                 case BuffID.OnFire3:
+                    Console.WriteLine("Dust Effect: GoldFlame");
                     applyDustEffect(hitbox, DustID.GoldFlame);
                     break;
                 default:
+                    Console.WriteLine("Dust Effect: No Dust");
                     break;
             }
         }

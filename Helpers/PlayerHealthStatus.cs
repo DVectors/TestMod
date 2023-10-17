@@ -6,4 +6,6 @@
             MAX_HEALTH,
             MAX_LIFE_FRUIT 
         }
+
+        
     }

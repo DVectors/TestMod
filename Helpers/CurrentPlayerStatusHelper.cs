@@ -5,7 +5,7 @@ namespace TestMod.Helpers
     {
         public static PlayerHealthStatus playerCurrentHealthStatus(int currentHealth)
         {
-            if (currentHealth >= 400 && currentHealth <= 500)
+            if (currentHealth >= 400 && currentHealth < 500)
             {
                 return PlayerHealthStatus.MAX_HEALTH;
             }
@@ -18,7 +18,7 @@ namespace TestMod.Helpers
 
         public static PlayerManaStatus playerCurrentManaStatus(int currentMana)
         {
-            if (currentMana >= 400)
+            if (currentMana >= 200)
             {
                 return PlayerManaStatus.MAX_MANA;
             }
