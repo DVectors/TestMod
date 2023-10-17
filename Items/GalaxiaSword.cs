@@ -26,10 +26,10 @@ namespace TestMod.Items
 			Item.knockBack = 6f;
 			Item.value = 10000;
 			Item.rare = ItemRarityID.Yellow;
-			Item.UseSound = SoundID.Item15; // Use Phasesaber sound - Placeholder
+			Item.UseSound = SoundID.Item15; // 259 = Eye Beam (Placeholder)
 			Item.autoReuse = true;
 
-			Item.shoot = ProjectileID.None; // Default to 0 - No projectile
+			Item.shoot = ProjectileID.EyeBeam; // Default to 0 - No projectile
 			Item.shootSpeed = 16f; // Shoot speed for projectile
 		}
 
@@ -94,9 +94,7 @@ namespace TestMod.Items
 			Console.WriteLine("Current Mana: {0}",playerManaStatus.ToString());
             Console.WriteLine("Projectile Enabled: {0}",galaxiaProjectileEnabled(playerHealthStatus, playerManaStatus));
 			if (galaxiaProjectileEnabled(playerHealthStatus, playerManaStatus)) // Fire projectile when at full health and max hearts
-			{
-				
-				type = ProjectileID.EyeBeam; // 259 = Eye Beam (Placeholder)
+			{			
 				Projectile.NewProjectile(source, position, velocity, type, damage, knockback);
 			}
 
