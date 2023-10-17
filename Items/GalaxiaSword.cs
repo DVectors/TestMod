@@ -29,7 +29,7 @@ namespace TestMod.Items
 			Item.UseSound = SoundID.Item15; // 259 = Eye Beam (Placeholder)
 			Item.autoReuse = true;
 
-			Item.shoot = ProjectileID.EyeBeam; // Default to 0 - No projectile
+			Item.shoot = ProjectileID.EnchantedBeam; // Default to 0 - No projectile
 			Item.shootSpeed = 16f; // Shoot speed for projectile
 		}
 
@@ -87,14 +87,11 @@ namespace TestMod.Items
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-			Console.WriteLine("Running Galaxia Shoot method");
             PlayerHealthStatus playerHealthStatus = playerCurrentHealthStatus(player.statLifeMax);
-			Console.WriteLine("Current Health: {0}",playerHealthStatus.ToString());
 			PlayerManaStatus playerManaStatus = playerCurrentManaStatus(player.statManaMax);
-			Console.WriteLine("Current Mana: {0}",playerManaStatus.ToString());
             Console.WriteLine("Projectile Enabled: {0}",galaxiaProjectileEnabled(playerHealthStatus, playerManaStatus));
 			if (galaxiaProjectileEnabled(playerHealthStatus, playerManaStatus)) // Fire projectile when at full health and max hearts
-			{			
+			{		
 				Projectile.NewProjectile(source, position, velocity, type, damage, knockback);
 			}
 
